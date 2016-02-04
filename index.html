@@ -4,7 +4,7 @@
 <title>GitHub Test Page</title>
 </head>
 <body>
-<span class="sr-blink" data-showtime="500" data-hidetime="300">Hello github webpage!!</span>
+<span class="sr-blink" data-showtime="200" data-hidetime="200">Hello github webpage!!</span>
 
 <script src="http://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 <script>
@@ -19,12 +19,12 @@ $(document).ready(function() {
   
   function show($e) {
     $e.show();
-    setTimeout(function() {hide($e);}, $e.data("showtime") || 500);
+    setTimeout(function() {hide($e);}, $e.data("showtime") || 300);
   }
   
   function hide($e) {
     $e.hide();
-    setTimeout(function() {show($e);}, $e.data("hidetime") || 500);
+    setTimeout(function() {show($e);}, $e.data("hidetime") || 300);
   }
 });
 </script>
