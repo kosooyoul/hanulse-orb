@@ -19,12 +19,12 @@ $(document).ready(function() {
   
   function show($e) {
     $e.show();
-    setTimer(function() {hide($e);}, $e.data("showtime") || 500);
+    setTimeout(function() {hide($e);}, $e.data("showtime") || 500);
   }
   
   function hide($e) {
     $e.hide();
-    setTimer(function() {show($e);}, $e.data("hidetime") || 500);
+    setTimeout(function() {show($e);}, $e.data("hidetime") || 500);
   }
 });
 </script>
