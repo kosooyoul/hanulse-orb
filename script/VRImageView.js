@@ -85,9 +85,9 @@
 		window.addEventListener('mousedown', onDown, false);
 		window.addEventListener('mousemove', onMove, false);
 		window.addEventListener('mouseup', onUp, false);
-		window.addEventListener("touchstart", onDown);
-		window.addEventListener("touchmove", onMove);
-		window.addEventListener("touchend", onUp);
+		obj.element.addEventListener("touchstart", onDown);
+		obj.element.addEventListener("touchmove", onMove);
+		obj.element.addEventListener("touchend", onUp);
 		window.addEventListener('resize', function() {
 			obj.renderer.setSize(window.innerWidth, window.innerHeight);
 
