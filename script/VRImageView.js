@@ -2,6 +2,8 @@
 	var clazz = {};
 
 	clazz.constructor = function(element) {
+		this.src = element.getAttribute("data-src");
+
 		this.scene = new THREE.Scene(); // Create a Three.js scene object.
 		this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000); // Define the perspective camera's attributes.
 
@@ -21,7 +23,7 @@
 	};
 
 	var initializeSphere = function(obj) {
-		var texture = new THREE.TextureLoader().load( "2.jpg" );
+		var texture = new THREE.TextureLoader().load(this.src);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( -1, -2 );
