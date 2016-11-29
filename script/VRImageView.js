@@ -23,7 +23,7 @@
 	};
 
 	var initializeSphere = function(obj) {
-		var texture = new THREE.TextureLoader().load(this.src);
+		var texture = new THREE.TextureLoader().load(obj.src);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( -1, -2 );
