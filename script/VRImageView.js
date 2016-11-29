@@ -2,6 +2,7 @@
 	var clazz = {};
 
 	clazz.constructor = function(element) {
+		this.element = element;
 		this.src = element.getAttribute("data-src");
 
 		this.scene = new THREE.Scene(); // Create a Three.js scene object.
