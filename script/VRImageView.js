@@ -20,7 +20,7 @@
 	};
 
 	var loadData = function(obj) {
-		showSpinner(this);
+		showSpinner(obj);
 
 		if (obj.src) {
 			initialize(obj);
