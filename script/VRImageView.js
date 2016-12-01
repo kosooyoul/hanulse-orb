@@ -16,31 +16,37 @@
 
 		element.appendChild(this.renderer.domElement); // Append the WebGL viewport to the DOM.
 
+		loadData(this);
+	};
+
+	var loadData = function(obj) {
 		showSpinner(this);
 
-		initializeCamera(this);
-		initializeSphereData(this);
-		initializeRenderLoop(this);
-		initializeEvents(this);
-	};
-
-	var initializeCamera = function(obj) {
-		obj.camera.position.z = 0; // Move the camera away from the origin, down the positive z-axis.
-	};
-
-	var initializeSphereData = function(obj) {
 		if (obj.src) {
-			initializeSphere(obj);
+			initialize(obj);
 		} else if (obj.jsonp) {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.src = obj.jsonp;
 			window.jsonp = function(jso) {
 				obj.src = jso.data;
-				initializeSphere(obj);
+				initialize(obj);
 			};
 			document.head.appendChild(script);
 		}
+	};
+
+	var initialize = function(obj) {
+		initializeSphere(obj);
+		initializeCamera(obj);
+		initializeRenderLoop(obj);
+		initializeEvents(obj);
+
+		hideSpinner(obj);
+	};
+
+	var initializeCamera = function(obj) {
+		obj.camera.position.z = 0; // Move the camera away from the origin, down the positive z-axis.
 	};
 
 	var initializeSphere = function(obj) {
@@ -53,8 +59,6 @@
 		var material = new THREE.MeshBasicMaterial({map: texture}); // Skin the cube with 100% blue.
 		obj.mesh = new THREE.Mesh(geometry, material); // Create a mesh based on the specified geometry (cube) and material (blue skin).
 		obj.scene.add(obj.mesh); // Add the sphere at (0, 0, 0).
-
-		hideSpinner(this);
 	};
 
 	var initializeRenderLoop = function(obj) {
