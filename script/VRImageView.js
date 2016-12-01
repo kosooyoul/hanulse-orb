@@ -41,6 +41,7 @@
 		initializeCamera(obj);
 		initializeRenderLoop(obj);
 		initializeEvents(obj);
+		initializeDownloader(obj);
 
 		hideSpinner(obj);
 	};
@@ -121,6 +122,13 @@
 			obj.camera.aspect = window.innerWidth / window.innerHeight;
 			obj.camera.updateProjectionMatrix();
 		}, false);
+	};
+
+	var initializeDownloader = function(obj) {
+		if (!obj.downloader) return;
+		
+		var downloader = document.getElementById(obj.downloader);
+		downloader.href = obj.src;
 	};
 
 	var showSpinner = function(obj) {
