@@ -26,19 +26,19 @@
 
 	var initializeSphereData = function(obj) {
 		if (obj.src) {
-			initializeSphere(obj.src);
+			initializeSphere(obj, obj.src);
 		} else if (obj.jsonp) {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.src = obj.jsonp;
 			window.jsonp = function(jso) {
-				initializeSphere(jso.data);
+				initializeSphere(obj, jso.data);
 			};
 			document.head.appendChild(script);
 		}
 	};
 
-	var initializeSphere = function(uri) {
+	var initializeSphere = function(obj, uri) {
 		var texture = new THREE.TextureLoader().load(uri);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
