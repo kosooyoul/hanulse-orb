@@ -5,6 +5,8 @@
 		this.element = element;
 		this.src = element.getAttribute("data-src");
 		this.jsonp = element.getAttribute("data-jsonp");
+		this.spinner = element.getAttribute("data-spinner");
+		this.downloader = element.getAttribute("data-downloader");
 
 		this.scene = new THREE.Scene(); // Create a Three.js scene object.
 		this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000); // Define the perspective camera's attributes.
@@ -13,6 +15,8 @@
 		this.renderer.setSize(window.innerWidth, window.innerHeight); // Set the size of the WebGL viewport.
 
 		element.appendChild(this.renderer.domElement); // Append the WebGL viewport to the DOM.
+
+		showSpinner(this);
 
 		initializeCamera(this);
 		initializeSphereData(this);
@@ -26,20 +30,21 @@
 
 	var initializeSphereData = function(obj) {
 		if (obj.src) {
-			initializeSphere(obj, obj.src);
+			initializeSphere(obj);
 		} else if (obj.jsonp) {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.src = obj.jsonp;
 			window.jsonp = function(jso) {
-				initializeSphere(obj, jso.data);
+				obj.src = jso.data;
+				initializeSphere(obj);
 			};
 			document.head.appendChild(script);
 		}
 	};
 
-	var initializeSphere = function(obj, uri) {
-		var texture = new THREE.TextureLoader().load(uri);
+	var initializeSphere = function(obj) {
+		var texture = new THREE.TextureLoader().load(obj.src);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( -1, -2 );
@@ -48,6 +53,8 @@
 		var material = new THREE.MeshBasicMaterial({map: texture}); // Skin the cube with 100% blue.
 		obj.mesh = new THREE.Mesh(geometry, material); // Create a mesh based on the specified geometry (cube) and material (blue skin).
 		obj.scene.add(obj.mesh); // Add the sphere at (0, 0, 0).
+
+		hideSpinner(this);
 	};
 
 	var initializeRenderLoop = function(obj) {
@@ -110,6 +117,20 @@
 			obj.camera.aspect = window.innerWidth / window.innerHeight;
 			obj.camera.updateProjectionMatrix();
 		}, false);
+	};
+
+	var showSpinner = function(obj) {
+		if (!obj.spinner) return;
+
+		var spinner = document.getElementById(obj.spinner);
+		spinner.style.display = 'block';
+	};
+
+	var hideSpinner = function(obj) {
+		if (!obj.spinner) return;
+
+		var spinner = document.getElementById(obj.spinner);
+		spinner.style.display = 'none';
 	};
 
 	window.VRImageViewer = clazz;
