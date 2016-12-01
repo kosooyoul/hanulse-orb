@@ -4,6 +4,7 @@
 	clazz.constructor = function(element) {
 		this.element = element;
 		this.src = element.getAttribute("data-src");
+		this.jsonp = element.getAttribute("data-jsonp");
 
 		this.scene = new THREE.Scene(); // Create a Three.js scene object.
 		this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000); // Define the perspective camera's attributes.
@@ -24,6 +25,17 @@
 	};
 
 	var initializeSphere = function(obj) {
+		if (obj.jsonp) {
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.src = obj.jsonp;
+			window.jsonp = function(jso) {
+				initializeSphere(jso.data);
+			};
+			document.head.appendChild(script);
+			return;
+		}
+
 		var texture = new THREE.TextureLoader().load(obj.src);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
@@ -97,6 +109,7 @@
 		}, false);
 	};
 
+	window.VRImageViewer = clazz;
 	window.addEventListener("load", function() {
 		var elements = document.querySelectorAll("[data-view=\'vr-image\']");
 		var i;
