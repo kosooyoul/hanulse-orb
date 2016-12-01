@@ -15,7 +15,7 @@
 		element.appendChild(this.renderer.domElement); // Append the WebGL viewport to the DOM.
 
 		initializeCamera(this);
-		initializeSphere(this);
+		initializeSphereData(this);
 		initializeRenderLoop(this);
 		initializeEvents(this);
 	};
@@ -24,8 +24,10 @@
 		obj.camera.position.z = 0; // Move the camera away from the origin, down the positive z-axis.
 	};
 
-	var initializeSphere = function(obj) {
-		if (obj.jsonp) {
+	var initializeSphereData = function(obj) {
+		if (obj.src) {
+			initializeSphere(obj.src);
+		} else if (obj.jsonp) {
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.src = obj.jsonp;
@@ -36,7 +38,10 @@
 			return;
 		}
 
-		var texture = new THREE.TextureLoader().load(obj.src);
+	};
+
+	var initializeSphere = function(uri) {
+		var texture = new THREE.TextureLoader().load(uri);
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( -1, -2 );
