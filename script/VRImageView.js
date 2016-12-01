@@ -35,9 +35,7 @@
 				initializeSphere(jso.data);
 			};
 			document.head.appendChild(script);
-			return;
 		}
-
 	};
 
 	var initializeSphere = function(uri) {
