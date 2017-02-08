@@ -42,9 +42,9 @@ html, body, #map {
   var marker = new naver.maps.Marker({
     position: new naver.maps.LatLng(_params['lat'], _params['lng']),
     map: map,
-    scaleControl: _params['control'],
-    logoControl: _params['control'],
-    mapDataControl: _params['control'],
+    scaleControl: false,
+    logoControl: false,
+    mapDataControl: false,
     zoomControl: _params['control']
   });
 
