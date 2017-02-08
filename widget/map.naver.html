@@ -9,6 +9,9 @@
 html, body, #map {
   width: 100%; height: 100%; margin: 0px; padding: 0px;
 }
+#map div.info {
+  padding: 10px;
+}
 #map h3 {
   font-size: 20px; color: #26304d; padding: 0; margin: 50px 0 0;
 }
@@ -28,8 +31,8 @@ html, body, #map {
   _params['zoom'] = Number(_params['zoom']) || 10;
   _params['marker'] = _params['marker'] != 'no';
   _params['control'] = _params['control'] == 'yes';
-  _params['title'] = _params['title'];
-  _params['description'] = _params['description'];
+  _params['title'] = _params['title'] || null;
+  _params['description'] = _params['description'] || null;
 
   var map = new naver.maps.Map('map', {
     center: new naver.maps.LatLng(_params['lat'], _params['lng']),
@@ -49,6 +52,7 @@ html, body, #map {
     var div = document.createElement('div');
     var h3 = document.createElement('h3');
     var p = document.createElement('p');
+    div.setAttribute('class', 'info');
     h3.innerText = _params['title'];
     p.innerText = _params['description'];
     div.appendChild(h3);
