@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<title>Naver Map</title>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=gslXaXtCXg7PmVe9kBey"></script>
+</head>
+<body>
+<div id="map" style="width: 100%;height: 100%;"></div>
+<script>
+(function() {
+  var _params = params();
+  _params['lat'] = Number(_params['lat']) || 37.3595704;
+  _params['lng'] = Number(_params['lng']) || 127.105399;
+  _params['zoom'] = Number(_params['zoom']) || 10;
+
+  var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(_params['lat'], _params['lng']),
+    zoom: _params['zoom']
+  });
+  
+  function params() {
+    var obj = {}, pairs = location.search.substr(1).split('&');
+    for(var i in pairs) {
+      var split = pairs[i].split('=');
+      obj[decodeURIComponent(split[0])] = decodeURIComponent(split[1]);
+    }
+  }
+})();
+</script>
+</body>
+</html>
