@@ -20,12 +20,23 @@ html, body, #map {
   _params['lat'] = Number(_params['lat']) || 37.3595704;
   _params['lng'] = Number(_params['lng']) || 127.105399;
   _params['zoom'] = Number(_params['zoom']) || 10;
+  _params['marker'] = _params['marker'] != 'no';
+  _params['control'] = _params['control'] == 'yes';
 
   var map = new naver.maps.Map('map', {
     center: new naver.maps.LatLng(_params['lat'], _params['lng']),
     zoom: _params['zoom']
   });
-  
+
+  var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(_params['lat'], _params['lng']),
+    map: map,
+    scaleControl: _params['control'],
+    logoControl: _params['control'],
+    mapDataControl: _params['control'],
+    zoomControl: _params['control']
+  });
+
   function params() {
     var obj = {}, pairs = location.search.substr(1).split('&');
     for(var i in pairs) {
