@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+
+  <meta property="og:title" content="제목 - 360 사진 앨범">
+  <meta property="og:url" content="http://vr.ahyane.net/de6ed55314ca2c4decfea1fa0ec2c87a">
+  <meta property="og:description" content="360 사진을 터치로 돌려서 볼 수 있습니다. 가로모드에서 보시는 것을 권장합니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:domain" content="vr.ahyane.net">
+  <meta property="og:image" content="http://git.ahyane.net/album/20190707/thumbnail.jpg">
+
+  <title>제목</title>
+  <link rel="shortcut icon" href="http://www.ahyane.net/iconz/vr.ico">
+  <link rel="stylesheet" href="http://www.ahyane.net/vr/css/VRImageViewer.css">
+</head>
+
+<body>
+  <div data-view="vr-image" data-jsonp="http://git.ahyane.net/album/20180503/360_0276.jsonp" data-anglex="-5" data-angley="-40"  data-anglez="0" data-fov="75" data-onload="onVRImageLoad"></div>
+  <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
+  <script src="VRImageViewer.js"></script>
+  
+  <div class="rollover" style="position: absolute; left: 8px; top: 8px; width: 64px; height: 64px; border-radius: 10px;">
+    <a href="?qos=high">
+	  <img width="48" height="48" src="http://www.ahyane.net/vr/images/mobile.png" style="padding: 8px;">
+	</a>
+  </div>
+
+  <div id="spinner" style="position: absolute; left: 50%; top: 50%; margin-left: -32px; margin-top: -32px; width: 64px; height: 64px; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; pointer-events: none;">
+    <img class="spinner" width="48" height="48" src="http://www.ahyane.net/vr/images/spinner.png" style="padding: 8px;">
+  </div>
+
+  <div class="rollover" style="position: absolute; left: 8px; top: 50%; margin-top: -32px; width: 64px; height: 64px; border-radius: 10px;">
+    <a href="c4dec5314ca2c87afea1fa0ec2de6ed5?qos=low">
+	  <img width="48" height="48" src="http://www.ahyane.net/vr/images/previous.png" style="padding: 8px;">
+	</a>
+  </div>
+
+  <div class="rollover" style="position: absolute; right: 8px; top: 50%; margin-top: -32px; width: 64px; height: 64px; border-radius: 10px;">
+    <a href="6ed55fea1fdea0ec2c87a314ca2c4dec?qos=low">
+	  <img width="48" height="48" src="http://www.ahyane.net/vr/images/next.png" style="padding: 8px;">
+	</a>
+  </div>
+
+  <div style="background-color: rgba(0, 0, 0, 0.2); position: absolute; left: 50%; bottom: 10px; margin-left: -64px; width: 128px; height: 32px; border-radius: 10px; color: white; font-size: 12px; text-align: center; line-height: 32px;">
+  2 / 9  </div>
+
+  <a id="downloader" href="#" download="360_0382.M.jpg" target="_blank" style="display: none; position: absolute; right: 8px; bottom: 8px; width: 64px; height: 64px; background-color: rgba(0, 0, 0, 0.2);">
+    <img width="100%" height="100%" src="http://www.ahyane.net/vr/images/download.png">
+  </a>
+
+  <script>
+    window.onVRImageLoad = function() {
+      var spinner = document.getElementById('spinner');
+      spinner.style.display = 'none';
+      console.log('OK');
+    }
+  </script>
+
+
+<div style="position: absolute; right: 0px; top: 0px; width: 100px; height: 100px; z-index: 100;">
+	<input type="file" id="sourceImageFile" style="width: 100px; height: 100px; border: none;" onchange="init()">
+	<div style="position: absolute; left: 0px; top: 0px; width: 100px; height: 100px; background: black; border: white; color: white; font-size: 10px; text-align: center; pointer-events: none;">
+		Generate!<br>Drag drop here
+	</div>
+</div>
+<div style="position: absolute; right: 100px; top: 0px; width: 400px; height: 100px; z-index: 200; background: white;">
+	<button onclick="downloadPartJsonp(0,0,2)">0,0</button><button onclick="downloadPartJsonp(1,0,2)">1,0</button><button onclick="downloadPartJsonp(2,0,2)">2,0</button><button onclick="downloadPartJsonp(3,0,2)">3,0</button><button onclick="downloadPartJsonp(4,0,2)">4,0</button><button onclick="downloadPartJsonp(5,0,2)">5,0</button><button onclick="downloadPartJsonp(6,0,2)">6,0</button><button onclick="downloadPartJsonp(7,0,2)">7,0</button><br>
+	<button onclick="downloadPartJsonp(0,1)">0,1</button><button onclick="downloadPartJsonp(1,1)">1,1</button><button onclick="downloadPartJsonp(2,1)">2,1</button><button onclick="downloadPartJsonp(3,1)">3,1</button><button onclick="downloadPartJsonp(4,1)">4,1</button><button onclick="downloadPartJsonp(5,1)">5,1</button><button onclick="downloadPartJsonp(6,1)">6,1</button><button onclick="downloadPartJsonp(7,1)">7,1</button><br>
+	<button onclick="downloadPartJsonp(0,2)">0,2</button><button onclick="downloadPartJsonp(1,2)">1,2</button><button onclick="downloadPartJsonp(2,2)">2,2</button><button onclick="downloadPartJsonp(3,2)">3,2</button><button onclick="downloadPartJsonp(4,2)">4,2</button><button onclick="downloadPartJsonp(5,2)">5,2</button><button onclick="downloadPartJsonp(6,2)">6,2</button><button onclick="downloadPartJsonp(7,2)">7,2</button><br>
+	<button onclick="downloadPartJsonp(0,3,2)">0,3</button><button onclick="downloadPartJsonp(1,3,2)">1,3</button><button onclick="downloadPartJsonp(2,3,2)">2,3</button><button onclick="downloadPartJsonp(3,3,2)">3,3</button><button onclick="downloadPartJsonp(4,3,2)">4,3</button><button onclick="downloadPartJsonp(5,3,2)">5,3</button><button onclick="downloadPartJsonp(6,3,2)">6,3</button><button onclick="downloadPartJsonp(7,3,2)">7,3</button>
+</div>
+
+<script>
+function getImageFromFile(file, callbackWithImage) {
+	var reader = new FileReader();
+	reader.onload = function(readerEvent) {
+		var image = new Image();
+		image.onload = function() {
+			callbackWithImage(image);
+		};
+		image.src = reader.result;
+	};
+	reader.readAsDataURL(file);
+}
+
+function getImaegSizeScaledByHeight(image, toHeight) {
+	var width = image.naturalWidth;
+	var height = image.naturalHeight;
+	width *= toHeight / height
+	height = toHeight;
+	return {
+		width: width,
+		height: height
+	};
+}
+
+function getCroppedImageDataUri(image, imageSize, area, quality) {
+	var canvas = document.createElement('canvas');
+	canvas.width = area.width;
+	canvas.height = area.height;
+
+	var context = canvas.getContext("2d");
+	context.drawImage(image, -area.left, -area.top, imageSize.width, imageSize.height);
+
+	return canvas.toDataURL('image/jpeg', quality || 0.9);
+}
+
+function getImageDataUri(image, size, quality) {
+	var canvas = document.createElement('canvas');
+	canvas.width = size.width;
+	canvas.height = size.height;
+
+	var context = canvas.getContext("2d");
+	context.drawImage(image, 0, 0, size.width, size.height);
+
+	return canvas.toDataURL('image/jpeg', quality || 0.9);
+}
+
+var global = {};
+
+function init() {
+	var file = document.getElementById("sourceImageFile");
+	file = file && file.files && file.files[0];
+
+	getImageFromFile(file, function(image) {
+
+		global.name = file.name.split('.')[0];
+		global.image = image;
+		global.imageSize = getImaegSizeScaledByHeight(image, 2048);
+		global.divideX = 8;
+		global.divideY = 4;
+
+		// var x = 0, y = 0;
+		// getCroppedImageDataUri(image, {left: sizeOfPart.width * x, top: sizeOfPart.height * y, width: sizeOfPart.width, height: sizeOfPart.height});
+
+		// uri = getImageDataUri(image, size);
+		console.log(global);
+
+	});
+}
+
+function downloadPartJsonp(x, y, quarter) {
+	var imageSize = {width: global.imageSize.width / (quarter || 1), height: global.imageSize.height / (quarter || 1)};
+
+	var sizeOfPart = {width: imageSize.width / global.divideX, height: imageSize.height / global.divideY};
+	var areaToCrop = {left: sizeOfPart.width * x, top: sizeOfPart.height * y, width: sizeOfPart.width, height: sizeOfPart.height};
+
+	var uri = getCroppedImageDataUri(global.image, imageSize, areaToCrop);
+
+	var obj = {type: 'part', key: x + '-' + y, name: global.name, x: x, y: y, y, uri: uri};
+	var jsonp = 'jsonp(' + JSON.stringify(obj) + ');';
+	var filename = global.name + '_' + x + '-' + y + '.jsonp';
+
+	downloadTextFile(filename, jsonp);
+}
+
+function downloadTextFile(filename, text) {
+	var element = document.createElement('a');
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+
+	element.style.display = 'none';
+	document.body.appendChild(element);
+
+	element.click();
+
+	document.body.removeChild(element);
+}
+</script>
+
+</body>
+</html>
