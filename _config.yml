@@ -2,7 +2,7 @@
 title:            "Bling Bling Script House"
 description:      "Refer to Posts and Codes on the Bling Bling Script House. It will help me and us."
 url:              https://git.ahyane.net # Site url, without a slash at the end.
-signoff:          "muan" # Your name
+signoff:          "Hanulse" # Your name
 facebook_appid:   # APP ID for like button, remove from /_includes/share.html if unwanted.
 google_analytics: # Set tracking, remove from /javascripts/basic.js if unwanted.
 share:            false # Turn on twitter and facebook share buttons
