@@ -1,37 +1,13 @@
-<html>
-<head>
-<meta charset="utf-8">
-<title>GitHub Test Page</title>
-</head>
-<body>
-Wow!! <span class="sr-blink" data-showtime="200" data-hidetime="200">Hello github webpage!!</span> Nice to meet you!!
-<span class="sr-blink" data-showtime="210" data-hidetime="205">☆</span>
-<span class="sr-blink" data-showtime="220" data-hidetime="210">★</span>
-<span class="sr-blink" data-showtime="240" data-hidetime="220">☆</span>
-<span class="sr-blink" data-showtime="260" data-hidetime="230">★</span>
-<span class="sr-blink" data-showtime="280" data-hidetime="240">☆</span>
-<span class="sr-blink" data-showtime="300" data-hidetime="250">★</span>
-<script src="http://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<script>
-$(document).ready(function() {
-  $(".sr-blink").each(function(index, element) {
-    var $e = $(element);
-    if($e.is(":hidden"))
-      show($e);
-    else 
-      hide($e);
-  });
-  
-  function show($e) {
-    $e.css("visibility", "visible");
-    setTimeout(function() {hide($e);}, $e.data("showtime") || 300);
-  }
-  
-  function hide($e) {
-    $e.css("visibility", "hidden");
-    setTimeout(function() {show($e);}, $e.data("hidetime") || 300);
-  }
-});
-</script>
-</body>
-</html>
+---
+---
+
+<ul class="list pa0">
+  {% for post in site.posts %}
+  <li class="mv2">
+    <a href="{{ site.url }}{{ post.url }}" class="db pv1 link blue hover-mid-gray">
+      <time class="fr silver ttu">{{ post.date | date_to_string }} </time>
+      {{ post.title }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
